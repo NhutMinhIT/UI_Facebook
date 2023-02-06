@@ -3,6 +3,7 @@ package com.example.loginuifacebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,8 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(email.equals("nhutminh") &&
                         password.equals("nhutminhadmin")) {
-                    Toast.makeText(this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+                    Intent home = new Intent(this, HomeActivity.class);
+                    home.putExtra("email", email);
+                    Toast.makeText(getApplicationContext(), "Logging...", Toast.LENGTH_LONG).show();
+                    startActivity(home);
+
                 }else{
+                    Toast.makeText(this, "Wrong username or password!", Toast.LENGTH_SHORT).show();
+                    ((EditText) findViewById(R.id.password)).setText("");
                     Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show();
                 }
         }
